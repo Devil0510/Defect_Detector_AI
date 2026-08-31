@@ -1,0 +1,35 @@
+{
+    "dataset_directory": "/home/vaseem/PROJECT_DL/data/raw/NEU-DET",
+    "total_xml_files": 1770,
+    "total_image_files": 1770,
+    "valid_annotations": 1770,
+    "malformed_xml_count": 0,
+    "missing_images_count": 0,
+    "unreferenced_images_count": 170,
+    "invalid_boxes_count": 0,
+    "out_of_bound_boxes_count": 0,
+    "class_distribution": {
+        "crazing": 678,
+        "patches": 866,
+        "inclusion": 1001,
+        "pitted_surface": 423,
+        "rolled-in_scale": 620,
+        "scratches": 538
+    },
+    "bbox_statistics": {
+        "total_boxes": 4126,
+        "width_min": 8.0,
+        "width_max": 199.0,
+        "width_mean": 71.3034415899176,
+        "width_std": 52.01934859408168,
+        "height_min": 9.0,
+        "height_max": 199.0,
+        "height_mean": 94.98715462918081,
+        "height_std": 56.52689854572663,
+        "area_min": 108.0,
+        "area_max": 39601.0,
+        "area_mean": 6973.640329617063,
+        "area_std": 7539.047832657033,
+        "aspect_ratio_mean": 1.1298239463260082
+    }
+}

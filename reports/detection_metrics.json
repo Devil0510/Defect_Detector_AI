@@ -1,0 +1,23 @@
+{
+    "mAP_0.5": 0.6898206289952163,
+    "mAP_0.5_0.95": 0.3822644109498656,
+    "precision": 0.8002030240324786,
+    "recall": 0.5929068791132007,
+    "class_names": {
+        "0": "crazing",
+        "1": "inclusion",
+        "2": "patches",
+        "3": "pitted_surface",
+        "4": "rolled-in_scale",
+        "5": "scratches"
+    },
+    "per_class_map50": {
+        "crazing": 0.10457204871878653,
+        "inclusion": 0.41641460728921487,
+        "patches": 0.5454591154129116,
+        "pitted_surface": 0.5005383571213959,
+        "rolled-in_scale": 0.24706772448862419,
+        "scratches": 0.47953461266826036
+    },
+    "mean_inference_latency_ms": 5.650953919994208
+}

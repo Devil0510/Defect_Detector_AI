@@ -1,0 +1,10 @@
+{
+    "python_version": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+    "os_platform": "Linux-6.11.0-26-generic-x86_64-with-glibc2.39",
+    "cpu_count": 20,
+    "gpu_available": true,
+    "gpu_name": "NVIDIA T600, 550.144.03",
+    "cuda_version": null,
+    "pytorch_version": "2.13.0+cu130",
+    "pytorch_cuda_available": false
+}

@@ -1,0 +1,22 @@
+annotations_dir: /home/vaseem/PROJECT_DL/data/raw/NEU-DET/ANNOTATIONS
+channels: 1
+class_to_id:
+  crazing: 0
+  inclusion: 1
+  patches: 2
+  pitted_surface: 3
+  rolled-in_scale: 4
+  scratches: 5
+classes:
+- crazing
+- inclusion
+- patches
+- pitted_surface
+- rolled-in_scale
+- scratches
+data_dir: /home/vaseem/PROJECT_DL/data/raw/NEU-DET
+dataset_name: NEU-DET
+image_height: 200
+image_width: 200
+images_dir: /home/vaseem/PROJECT_DL/data/raw/NEU-DET/IMAGES
+num_classes: 6

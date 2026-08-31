@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and Environments
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# Training runs & caches
+runs/
+outputs/yolo_runs/
+*.cache
+data/interim/yolo/labels/*.cache
+data/raw/NEU-DET/*.cache
+yolov8n.pt
+yolo11m.pt
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
