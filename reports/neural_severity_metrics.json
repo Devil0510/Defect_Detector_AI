@@ -1,0 +1,12 @@
+{
+    "model_architecture": "EfficientNet-V2-S Dual-Head",
+    "test_samples_count": 644,
+    "continuous_score_mae_points": 3.9320015089181704,
+    "score_pearson_r": 0.9649340509320828,
+    "score_spearman_rho": 0.9635426816009507,
+    "ordinal_classification_accuracy": 0.8167701863354038,
+    "ordinal_macro_f1": 0.8067367490773666,
+    "mean_epistemic_uncertainty_std": 2.7133227877365136,
+    "ci_95_empirical_coverage_pct": 75.62111801242236,
+    "human_triage_flag_rate_pct": 0.9316770186335404
+}
