@@ -85,7 +85,7 @@ class DefectSeverityExplainer:
                 f"Neural Score (μ)  : {mean_s:.1f} ± {std_s:.2f} pts\n"
                 f"95% Credible Int. : [{ci_l:.1f}, {ci_u:.1f}]\n"
             )
-            triage_text = "⚠️ QC TRIAGE: HUMAN INSPECTION REQUIRED" if triage else "✅ QC STATUS: HIGH CERTAINTY"
+            triage_text = "[QC TRIAGE: HUMAN INSPECTION REQUIRED]" if triage else "[QC STATUS: HIGH CERTAINTY]"
 
         summary_text = (
             f"QUANTITATIVE DEFECT METRICS\n"
