@@ -149,36 +149,62 @@ pytest tests/
 
 ---
 
-## 5. How to Run Inference
+## 5. How to Run Inference (Custom Data & Output Locations)
+
+You can run inference on your own custom images or datasets by specifying your input image/directory path and desired output folder:
 
 ### Scenario A: Process a Single Image
-Run end-to-end multi-modal inference on any individual steel surface image:
+Provide any image path via `--input_path` and target output folder via `--output_dir`:
 
 ```bash
 python3 scripts/run_pipeline.py \
-  --input_path data/raw/NEU-DET/IMAGES/patches_1.jpg \
+  --input_path /path/to/your/image.jpg \
   --detector_weights models/detector_yolo.pt \
   --neural_severity models/severity_efficientnet_v2.pt \
-  --output_dir outputs/explanations
+  --output_dir /path/to/your/output_folder
 ```
 
-### Scenario B: Process an Entire Dataset / Directory of Images
-When given a folder containing multiple unseen steel surface images:
+### Scenario B: Process an Entire Directory / Batch of Images
+Pass any folder containing images to `--input_path` (or `-i`), and specify where visual reports and summary tables should be saved:
 
 ```bash
+# Option 1: Unified pipeline CLI
 python3 scripts/run_pipeline.py \
-  --input_path /path/to/test_images_folder \
+  --input_path /path/to/your/custom_dataset_folder \
   --detector_weights models/detector_yolo.pt \
   --neural_severity models/severity_efficientnet_v2.pt \
-  --output_dir outputs/evaluation_reports \
-  --summary_csv outputs/predictions_summary.csv
+  --output_dir /path/to/your/output_reports_folder \
+  --summary_csv /path/to/your/output_reports_folder/summary.csv
+
+# Option 2: Dedicated Batch Analysis CLI (with progress bar, summary metrics, and recursive folder scanning)
+python3 scripts/batch_analysis.py \
+  -i /path/to/your/custom_dataset_folder \
+  -o /path/to/your/output_reports_folder \
+  --recursive \
+  --use_clahe
 ```
 
-#### Output Artifacts:
-1. **Summary CSV (`outputs/predictions_summary.csv`)**:
-   Contains columns: `image_name`, `defect_index`, `defect_class`, `detector_confidence`, `bbox_xmin`, `bbox_ymin`, `bbox_xmax`, `bbox_ymax`, `defect_area_px`, `area_ratio_pct`, `aspect_ratio`, `circularity`, `local_contrast`, `severity_score`, `severity_grade`, `neural_severity_mean`, `neural_uncertainty_std`, `requires_human_triage`, `diagnostic_report_path`.
-2. **Visual Diagnostic Reports (`outputs/evaluation_reports/*_diagnostic.png`)**:
-   High-resolution 4-panel visual reports for every defect instance.
+### Scenario C: Interactive Prompt Mode
+If you run without arguments, the script will interactively ask you to enter your data directory and output directory:
+```bash
+python3 scripts/batch_analysis.py
+```
+
+### Input & Output Parameter Reference
+
+| Argument | Flag | Description | Example Value |
+| :--- | :--- | :--- | :--- |
+| **Input Data** | `--input_path` / `-i` | Absolute or relative path to a single image or image directory | `/home/user/my_steel_images/` |
+| **Output Folder** | `--output_dir` / `-o` | Target directory where 4-panel diagnostic PNGs will be saved | `/home/user/my_inspection_results/` |
+| **Summary CSV** | `--summary_csv` | CSV file path containing per-defect quantitative metrics | `/home/user/my_inspection_results/summary.csv` |
+| **Recursive Scan** | `--recursive` / `-r` | Recursively scan subdirectories for `.jpg`, `.png`, `.bmp`, `.tif` | Flag (`-r`) |
+| **CLAHE** | `--use_clahe` | Apply Contrast Limited Adaptive Histogram Equalization | Flag (`--use_clahe`) |
+
+#### Generated Output Artifacts:
+1. **Summary CSV (`predictions_summary.csv` / `batch_summary.csv`)**:
+   Contains per-defect metrics: `image_name`, `defect_class`, `detector_confidence`, `bbox_coordinates`, `defect_area_px`, `area_ratio_pct`, `aspect_ratio`, `circularity`, `local_contrast`, `severity_score`, `severity_grade`, `neural_severity_mean`, `neural_uncertainty_std`, `conformal_interval_width`, `qc_status`, `requires_human_triage`, and `diagnostic_report_path`.
+2. **Visual Diagnostic Reports (`*_diagnostic.png`)**:
+   High-resolution 4-panel multi-modal visual explanations (Original + BBox, Weak Segmentation Overlay, Grad-CAM Thermal Heatmap, and Quantitative Quality Badge).
 
 ---
 
