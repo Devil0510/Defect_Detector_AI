@@ -1,0 +1,6 @@
+{
+    "alpha": 0.05,
+    "target_coverage": 0.95,
+    "q_hat": 11.97409459677685,
+    "is_calibrated": true
+}

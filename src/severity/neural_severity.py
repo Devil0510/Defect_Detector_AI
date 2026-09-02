@@ -43,21 +43,29 @@ class EfficientNetV2SeverityModel(nn.Module):
         """Extracts spatial feature maps before pooling (used for Grad-CAM)."""
         return self.features(x)
 
+    def forward_mc_head(self, flat: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Runs stochastic forward pass directly on pre-extracted flat pooled embeddings.
+        Avoids recomputing convolutional backbone on deterministic features.
+        """
+        flat_drop = nn.functional.dropout(flat, p=self.dropout_rate, training=True)
+        emb = self.shared_fc[0](flat_drop)
+        emb = self.shared_fc[1](emb)
+        emb = nn.functional.dropout(emb, p=self.dropout_rate, training=True)
+        score = self.regression_head(emb) * 100.0
+        logits = self.classification_head(emb)
+        return score.squeeze(-1), logits
+
     def forward(self, x: torch.Tensor, enable_mc_dropout: bool = False) -> Tuple[torch.Tensor, torch.Tensor]:
         feat_map = self.features(x)
         pooled = self.avgpool(feat_map)
         flat = torch.flatten(pooled, 1)
 
         if enable_mc_dropout:
-            # Keep dropout active during inference
-            flat = nn.functional.dropout(flat, p=self.dropout_rate, training=True)
-            emb = self.shared_fc[0](flat)
-            emb = self.shared_fc[1](emb)
-            emb = nn.functional.dropout(emb, p=self.dropout_rate, training=True)
+            return self.forward_mc_head(flat)
         else:
             emb = self.shared_fc(flat)
+            score = self.regression_head(emb) * 100.0
+            logits = self.classification_head(emb)
+            return score.squeeze(-1), logits
 
-        score = self.regression_head(emb) * 100.0
-        logits = self.classification_head(emb)
-
-        return score.squeeze(-1), logits

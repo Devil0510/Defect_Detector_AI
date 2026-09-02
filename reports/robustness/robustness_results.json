@@ -1,0 +1,112 @@
+[
+    {
+        "corruption_type": "Clean (No Corruption)",
+        "corruption_param": 0,
+        "mae": 9.459695112383585,
+        "accuracy": 0.546583850931677,
+        "macro_f1": 0.5418951865657651,
+        "spearman_rho": 0.9427670038358738,
+        "mean_uncertainty_std": 2.649933639890659,
+        "ece": 0.19893041738997339
+    },
+    {
+        "corruption_type": "Gaussian Blur",
+        "corruption_param": 1,
+        "mae": 9.810702524372898,
+        "accuracy": 0.5590062111801242,
+        "macro_f1": 0.5659656875662346,
+        "spearman_rho": 0.78035150463532,
+        "mean_uncertainty_std": 3.088909784088964,
+        "ece": 0.1461187580727642
+    },
+    {
+        "corruption_type": "Gaussian Blur",
+        "corruption_param": 3,
+        "mae": 17.61259111127179,
+        "accuracy": 0.37732919254658387,
+        "macro_f1": 0.3466781890523448,
+        "spearman_rho": 0.2195914021082766,
+        "mean_uncertainty_std": 4.084990222076452,
+        "ece": 0.2408443944332022
+    },
+    {
+        "corruption_type": "Gaussian Blur",
+        "corruption_param": 5,
+        "mae": 21.014405608264944,
+        "accuracy": 0.2515527950310559,
+        "macro_f1": 0.24928817916860252,
+        "spearman_rho": -0.11062175050440146,
+        "mean_uncertainty_std": 4.476383194605016,
+        "ece": 0.32948188886324076
+    },
+    {
+        "corruption_type": "Gaussian Noise",
+        "corruption_param": 10,
+        "mae": 12.216848370085378,
+        "accuracy": 0.4813664596273292,
+        "macro_f1": 0.46143651507392924,
+        "spearman_rho": 0.9157699470421015,
+        "mean_uncertainty_std": 2.7770477033549956,
+        "ece": 0.22925530272240965
+    },
+    {
+        "corruption_type": "Gaussian Noise",
+        "corruption_param": 25,
+        "mae": 12.172753354202614,
+        "accuracy": 0.48757763975155277,
+        "macro_f1": 0.4778084593233138,
+        "spearman_rho": 0.8798988257625575,
+        "mean_uncertainty_std": 2.717859914213974,
+        "ece": 0.19449906490789431
+    },
+    {
+        "corruption_type": "Gaussian Noise",
+        "corruption_param": 50,
+        "mae": 13.984192515269106,
+        "accuracy": 0.39751552795031053,
+        "macro_f1": 0.38975276608982157,
+        "spearman_rho": 0.8090445557547662,
+        "mean_uncertainty_std": 2.5605386297525086,
+        "ece": 0.2677173000870284
+    },
+    {
+        "corruption_type": "Brightness Shift",
+        "corruption_param": -40,
+        "mae": 9.994342211659937,
+        "accuracy": 0.5217391304347826,
+        "macro_f1": 0.5155521902491391,
+        "spearman_rho": 0.9329918026641402,
+        "mean_uncertainty_std": 2.6889878946431676,
+        "ece": 0.22029101492270178
+    },
+    {
+        "corruption_type": "Brightness Shift",
+        "corruption_param": -20,
+        "mae": 9.608280749741505,
+        "accuracy": 0.532608695652174,
+        "macro_f1": 0.5275432780012401,
+        "spearman_rho": 0.9396725441683117,
+        "mean_uncertainty_std": 2.7075930126705523,
+        "ece": 0.2123476821258201
+    },
+    {
+        "corruption_type": "Brightness Shift",
+        "corruption_param": 20,
+        "mae": 9.58362036127583,
+        "accuracy": 0.5419254658385093,
+        "macro_f1": 0.5354175833399974,
+        "spearman_rho": 0.936475805471785,
+        "mean_uncertainty_std": 2.6509795462863046,
+        "ece": 0.19534200624279352
+    },
+    {
+        "corruption_type": "Brightness Shift",
+        "corruption_param": 40,
+        "mae": 9.855292407805184,
+        "accuracy": 0.5372670807453416,
+        "macro_f1": 0.5301015619843785,
+        "spearman_rho": 0.9221982231361038,
+        "mean_uncertainty_std": 2.6558714942162083,
+        "ece": 0.19286509492197393
+    }
+]

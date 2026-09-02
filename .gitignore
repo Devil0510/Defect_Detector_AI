@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.swp
+*.swo
 
 # Caches and Environments
 .pytest_cache/
@@ -13,9 +15,18 @@ env/
 # Training runs & caches
 runs/
 outputs/yolo_runs/
+outputs/demo_explanations/
+outputs/external_test/
+outputs/reports/
+outputs/test_batch_input/
+outputs/test_batch_output/
+outputs/test_interactive_output/
+outputs/test_single_out/
+outputs/yolo11m_reports/
+outputs/*.csv
 *.cache
-data/interim/yolo/labels/*.cache
-data/raw/NEU-DET/*.cache
+data/interim/yolo/
+data/raw/
 yolov8n.pt
 yolo11m.pt
 
@@ -27,3 +38,4 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
+

@@ -275,7 +275,7 @@ python3 scripts/run_ablation.py
 A comprehensive 9-report scientific audit is documented in [`reports/research_audit/`](reports/research_audit/README.md):
 - **Surrogate vs Ground Truth**: Handcrafted ML classifiers learn surrogate emulation of the continuous geometric severity index formula rather than independent physical truth.
 - **Quantile Recalibration**: Severity category thresholds use empirical quantile boundaries ($S < 25$ Low, $25 \le S < 45$ Moderate, $45 \le S < 62$ High, $S \ge 62$ Critical), resolving class imbalance and boosting Critical recall from 20% to 99%.
-- **Standards Mapping**: Industrial standards (EN 10163, ASTM A6, ASTM E45) require 3D depth gauges or metallographic polishing at $100\times$; 2D photograph formulas are explicitly documented as exploratory geometric proxies.
+- **2D Geometric Proxy**: The severity index is an exploratory geometric formula computed from 2D pixel measurements. It is not derived from industrial metallographic standards that require 3D depth gauges or physical instruments. All scores are documented as research proxies, not ground-truth physical severity.
 
 ---
 

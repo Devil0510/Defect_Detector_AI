@@ -17,9 +17,9 @@ This directory contains the comprehensive, rigorous methodological and research 
    - Metallurgical limitations of linear weighting models.
 
 3. [`standards_audit.md`](file:///home/vaseem/PROJECT_DL/reports/research_audit/standards_audit.md)
-   - Audit of ASTM, ISO, EN, and industrial specification claims.
-   - Verification that no standard was fabricated or falsely claimed.
-   - Explanation of EN 10163 and ASTM E45 measurement scopes.
+   - Audit of industrial specification claims and 2D measurement limitations.
+   - Verification that no industrial standard was fabricated or falsely claimed.
+   - Explanation of why 2D pixel-based severity formulas are exploratory geometric proxies.
 
 4. [`detection_audit.md`](file:///home/vaseem/PROJECT_DL/reports/research_audit/detection_audit.md)
    - Audit of the object detection stage.

@@ -78,14 +78,28 @@ class DefectSeverityExplainer:
             std_s = uncertainty_info.get("std_severity_score", 0.0)
             ci_l = uncertainty_info.get("ci_95_lower", max(0.0, mean_s - 1.96*std_s))
             ci_u = uncertainty_info.get("ci_95_upper", min(100.0, mean_s + 1.96*std_s))
+            is_conf = uncertainty_info.get("is_conformal_calibrated", False)
+            qc_status = uncertainty_info.get("qc_status", None)
             triage = uncertainty_info.get("requires_human_triage", False)
 
+            int_label = "95% Conformal Int." if is_conf else "95% Credible Int."
             unc_text = (
                 f"── UNCERTAINTY ESTIMATION (MC Dropout) ──\n"
                 f"Neural Score (μ)  : {mean_s:.1f} ± {std_s:.2f} pts\n"
-                f"95% Credible Int. : [{ci_l:.1f}, {ci_u:.1f}]\n"
+                f"{int_label:<18}: [{ci_l:.1f}, {ci_u:.1f}] (Δ={ci_u-ci_l:.1f})\n"
             )
-            triage_text = "[QC TRIAGE: HUMAN INSPECTION REQUIRED]" if triage else "[QC STATUS: HIGH CERTAINTY]"
+
+            if qc_status == "HUMAN_REVIEW_REQUIRED" or triage:
+                triage_text = "[QC TRIAGE: HUMAN INSPECTION REQUIRED]"
+                t_color = "red"
+            elif qc_status == "MODERATE_CONFIDENCE":
+                triage_text = "[QC STATUS: MODERATE CONFIDENCE]"
+                t_color = "royalblue"
+            else:
+                triage_text = "[QC STATUS: HIGH CONFIDENCE]"
+                t_color = "green"
+        else:
+            t_color = "green"
 
         summary_text = (
             f"QUANTITATIVE DEFECT METRICS\n"
@@ -104,7 +118,6 @@ class DefectSeverityExplainer:
         axes[panel_idx].text(0.05, 0.95, summary_text, transform=axes[panel_idx].transAxes, fontsize=10, family="monospace", verticalalignment="top")
         axes[panel_idx].text(0.05, 0.12, f"GRADE: {severity_category.upper()}", transform=axes[panel_idx].transAxes, fontsize=15, fontweight="bold", color=badge_color)
         if triage_text:
-            t_color = "red" if "REQUIRED" in triage_text else "green"
             axes[panel_idx].text(0.05, 0.04, triage_text, transform=axes[panel_idx].transAxes, fontsize=11, fontweight="bold", color=t_color)
 
         plt.tight_layout()
