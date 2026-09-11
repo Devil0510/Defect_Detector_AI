@@ -7,6 +7,9 @@
 
 A research-grade, reproducible, modular computer-vision and machine-learning pipeline for steel surface defect detection, quantitative feature extraction, deep neural severity estimation, Monte Carlo Dropout epistemic uncertainty quantification, and spatial Grad-CAM severity mapping using the NEU-DET (Northeastern University Surface Defect Database) benchmark.
 
+> [!TIP]
+> **Looking for a Client / Operator Guide?** See [**`CLIENT_README.md`**](CLIENT_README.md) for plain-English step-by-step instructions, parameters, model rationales, and output report interpretations.
+
 ---
 
 ## Table of Contents
